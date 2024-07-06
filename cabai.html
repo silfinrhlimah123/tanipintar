@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penanaman Cabai di Rumah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #FF6347; /* Tomato color */
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #ffe6e6; /* Light red background */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .task input[type="date"] {
+            margin-left: 10px;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .message-box img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            tasks.forEach(task => {
+                task.addEventListener('change', function() {
+                    const taskDateInput = this.parentElement.querySelector('input[type="date"]');
+                    if (this.checked) {
+                        const now = new Date();
+                        taskDateInput.value = now.toISOString().substring(0, 10);
+                    } else {
+                        taskDateInput.value = '';
+                    }
+                    updateHistory();
+                    checkCompletion();
+                });
+            });
+        });
+
+        function updateHistory() {
+            const history = [];
+            document.querySelectorAll('.task input[type="checkbox"]').forEach(task => {
+                if (task.checked) {
+                    const taskName = task.parentElement.querySelector('label').innerText;
+                    const taskDate = task.parentElement.querySelector('input[type="date"]').value;
+                    history.push(`${taskDate}: ${taskName}`);
+                }
+            });
+            document.getElementById('history').innerText = history.join('\n');
+        }
+
+        function checkCompletion() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            if (Array.from(tasks).every(task => task.checked)) {
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+            messageBox.innerHTML = `
+                <img src="cabeoutput.jpg" alt="Selamat">
+                <p>Selamat! Cabai Anda siap dipanen.</p>
+            `;
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>CABAI</h1>
+        <h2>Uraian tentang Cabai</h2>
+        <p>Cabai adalah tanaman yang sering digunakan sebagai bumbu masakan karena rasa pedasnya. Cabai memiliki berbagai manfaat kesehatan, seperti mengandung vitamin C, vitamin A, dan antioksidan. Cabai juga dikenal dapat meningkatkan metabolisme tubuh dan membantu dalam pengendalian berat badan.</p>
+        
+        <h2>Simulasi Penanaman Cabai di Rumah</h2>
+        <ol>
+            <li class="task">
+                <label>1. Menyiapkan Bahan</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>2. Menyiapkan Pot dari Botol Bekas</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>3. Mengisi Pot dengan Tanah dan Pupuk</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>4. Menanam Benih Cabai</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>5. Menyiram Benih</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>6. Meletakkan Pot di Tempat yang Tepat</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>7. Merawat Tanaman Cabai</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>8. Menunggu Tanaman Tumbuh</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+            <li class="task">
+                <label>9. Menunggu Hingga Panen</label>
+                <input type="checkbox">
+                <input type="date">
+                <span class="timestamp"></span>
+            </li>
+        </ol>
+        
+        <h2>Riwayat Penanaman</h2>
+        <pre id="history"></pre>
+    </div>
+</body>
+</html>

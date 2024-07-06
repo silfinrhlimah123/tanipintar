@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosedur Membuat Kebun Vertikal untuk Tanaman Daun Bawang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #c8e6c9; /* Light green background */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .task input[type="date"] {
+            margin-left: 10px;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .message-box img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            tasks.forEach(task => {
+                task.addEventListener('change', function() {
+                    const taskDateInput = this.parentElement.querySelector('input[type="date"]');
+                    if (this.checked) {
+                        const now = new Date();
+                        taskDateInput.value = now.toISOString().substring(0, 10);
+                    } else {
+                        taskDateInput.value = '';
+                    }
+                    updateHistory();
+                    checkCompletion();
+                });
+            });
+        });
+
+        function updateHistory() {
+            const history = [];
+            document.querySelectorAll('.task input[type="checkbox"]').forEach(task => {
+                if (task.checked) {
+                    const taskName = task.parentElement.querySelector('label').innerText;
+                    const taskDate = task.parentElement.querySelector('input[type="date"]').value;
+                    history.push(`${taskDate}: ${taskName}`);
+                }
+            });
+            document.getElementById('history').innerText = history.join('\n');
+        }
+
+        function checkCompletion() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            if (Array.from(tasks).every(task => task.checked)) {
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+            messageBox.innerHTML = `
+                <img src="badawa.jpeg" alt="Selamat">
+                <p>Selamat! Tanaman daun bawang Anda siap dipanen.</p>
+            `;
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prosedur Membuat Kebun Vertikal untuk Menanam Tanaman Daun Bawang</h1>
+        <p>Bawang daun, meskipun sering kali dianggap hanya sebagai bumbu pendukung dalam masakan, sebenarnya menyimpan fakta menarik yang dapat membangkitkan minat untuk menanamnya sendiri. Bawang daun tidak hanya memberikan aroma yang segar dan rasa yang khas pada hidangan, tetapi juga mengandung berbagai nutrisi penting seperti vitamin K, vitamin C, dan serat. Keberadaan nutrisi-nutrisi ini membuat bawang daun bermanfaat bagi kesehatan tulang, sistem kekebalan tubuh, dan pencernaan. Selain itu, bawang daun relatif mudah ditanam di kebun atau pot di rumah, memungkinkan siapa pun untuk menikmati kepraktisan dan kepuasan menanam tanaman sendiri. Anda dapat menanam bawang daun baik di kebun vertikal di halaman depan atau di pot-pot kecil di balkon, mengoptimalkan ruang yang terbatas dengan hasil panen yang melimpah. Dengan kelezatan dan manfaat gizi yang ditawarkannya, bawang daun adalah pilihan yang menarik untuk ditanam di rumah bagi siapa pun yang menghargai masakan sehat dan ingin memulai petualangan pertanian pribadi dengan mudah. Membuat kebun vertikal untuk menanam tanaman daun bawang adalah cara efisien untuk memaksimalkan ruang yang terbatas dan memastikan pasokan tanaman segar secara terus-menerus. Berikut adalah langkah-langkah detail untuk membuat kebun vertikal:</p>
+        
+        <h2>1. Perencanaan dan Persiapan</h2>
+        <ul>
+            <li class="task">
+                <label>Pilih Lokasi yang Sesuai: Tentukan lokasi yang mendapat sinar matahari minimal 4-6 jam sehari, idealnya di dekat dapur untuk kemudahan akses saat memasak.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Ukuran Kebun Vertikal: Tentukan ukuran kebun vertikal berdasarkan jumlah tanaman yang ingin Anda tanam.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Alat dan Bahan:
+                    <ul>
+                        <li>Kerangka Vertikal: Bisa menggunakan kayu, pipa PVC, atau bahan daur ulang seperti botol plastik.</li>
+                        <li>Wadah Tanam: Pot atau wadah yang cocok untuk menanam tanaman daun bawang secara vertikal.</li>
+                        <li>Media Tanam: Campuran tanah, kompos, dan pasir dengan perbandingan 2:1:1.</li>
+                        <li>Benih atau Bibit Daun Bawang: Pilih benih berkualitas atau bibit yang sehat untuk ditanam.</li>
+                    </ul>
+                </label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>2. Membuat Kerangka Vertikal</h2>
+        <ul>
+            <li class="task">
+                <label>Buat Rangka Vertikal: Gunakan bahan seperti kayu atau pipa PVC untuk membuat rangka vertikal. Pastikan rangka stabil dan mampu menopang wadah tanam dengan baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Susun Wadah Tanam: Susun wadah tanam secara vertikal pada rangka, pastikan jarak antar wadah cukup untuk pertumbuhan tanaman.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>3. Menyiapkan Media Tanam</h2>
+        <ul>
+            <li class="task">
+                <label>Campur Media Tanam: Campurkan tanah taman dengan kompos dan pasir dalam perbandingan yang disarankan. Pastikan campuran media tanam memiliki drainase yang baik namun tetap mampu menyimpan kelembapan.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Isi Wadah Tanam: Isi setiap wadah tanam dengan media tanam yang telah disiapkan, tinggalkan sedikit ruang di bagian atas untuk memudahkan penyemaian atau penanaman.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>4. Menanam Benih atau Bibit Daun Bawang</h2>
+        <ul>
+            <li class="task">
+                <label>Penyemaian Benih: Jika Anda menggunakan benih, sebarkan benih daun bawang secara merata di atas media tanam yang telah disiapkan. Tekan perlahan untuk menutupi benih dengan lapisan tipis tanah.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penanaman Bibit: Jika menggunakan bibit, tanam bibit daun bawang dengan menyesuaikan kedalaman tanamnya. Pastikan untuk menekan tanah di sekitar bibit untuk stabilitas yang baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>5. Perawatan Tanaman</h2>
+        <ul>
+            <li class="task">
+                <label>Penyiraman: Siram tanaman secara teratur untuk menjaga kelembapan tanah. Tanaman daun bawang menyukai tanah yang lembap tetapi tidak tergenang air.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemupukan: Beri pupuk nitrogen ringan setiap 3-4 minggu sekali untuk memastikan pertumbuhan yang baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemangkasan: Potong daun bawang secara teratur untuk mempromosikan pertumbuhan baru dan menjaga kebersihan tanaman.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>6. Pengendalian Hama dan Penyakit</h2>
+        <ul>
+            <li class="task">
+                <label>Pemeriksaan Rutin: Inspeksi tanaman secara berkala untuk mendeteksi tanda-tanda hama atau penyakit.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pengendalian Hama: Gunakan insektisida organik atau metode lainnya untuk mengendalikan hama seperti kutu daun atau ulat.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pengendalian Penyakit: Jika diperlukan, lakukan tindakan preventif atau pengobatan sesuai dengan jenis penyakit yang mungkin menyerang tanaman daun bawang.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>7. Panen</h2>
+        <ul>
+            <li class="task">
+                <label>Waktu Panen: Daun bawang bisa dipanen sekitar 6-8 minggu setelah tanam, tergantung pada jenis dan kondisi pertumbuhan.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Cara Panen: Potong daun bawang sesuai kebutuhan dengan gunting taman atau pisau tajam. Biarkan bagian pangkal tetap tumbuh untuk panen selanjutnya.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>8. Pemeliharaan Pascapanen</h2>
+        <ul>
+            <li class="task">
+                <label>Perawatan Lanjutan: Setelah panen, rawat tanaman dengan memastikan perawatan yang tepat untuk siklus berikutnya.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Simpan Hasil Panen: Simpan daun bawang di tempat yang sejuk dan kering, atau gunakan segar untuk masakan Anda.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>Riwayat Penanaman</h2>
+        <pre id="history"></pre>
+    </div>
+</body>
+</html>

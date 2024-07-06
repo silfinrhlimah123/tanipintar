@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAYURAN PILIHAN YANG MAU DITANAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .choice-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .choice-box {
+            background-color: #ffffff;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            width: 150px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .choice-box:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+        .choice-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .choice-box h3 {
+            margin-top: 10px;
+            color: #333;
+        }
+        .footer {
+            margin-top: 40px;
+        }
+        .footer h1 {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TANAMAN APA YANG MAU KAMU TANAM HARI INI?</h1>
+        <div class="choice-container">
+            <a href="tomat.html" class="choice-box">
+                <img src="TOMAT.jpg" alt="Tomat">
+                <h3>TOMAT</h3>
+            </a>
+            <a href="bdaun.html" class="choice-box">
+                <img src="dbup.jpg" alt="Bawang Daun">
+                <h3>BAWANG DAUN</h3>
+            </a>
+        </div>
+        <div class="choice-container">
+            <a href="cobacabe.html" class="choice-box">
+                <img src="cabaii.jpg" alt="Cabai">
+                <h3>CABAI</h3>
+            </a>
+            <a href="jahe.html" class="choice-box">
+                <img src="stoberi.jpg" alt="Jahe">
+                <h3>STROBERI</h3>
+            </a>
+        </div>
+        <div class="footer">
+            <h1>BERTANI ITU SERU!</h1>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penanaman Cabai di Rumah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #c8e6c9; /* Light green background */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .task input[type="date"] {
+            margin-left: 10px;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .message-box img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            tasks.forEach(task => {
+                task.addEventListener('change', function() {
+                    const taskDateInput = this.parentElement.querySelector('input[type="date"]');
+                    if (this.checked) {
+                        const now = new Date();
+                        taskDateInput.value = now.toISOString().substring(0, 10);
+                    } else {
+                        taskDateInput.value = '';
+                    }
+                    updateHistory();
+                    checkCompletion();
+                });
+            });
+        });
+
+        function updateHistory() {
+            const history = [];
+            document.querySelectorAll('.task input[type="checkbox"]').forEach(task => {
+                if (task.checked) {
+                    const taskName = task.parentElement.querySelector('label').innerText;
+                    const taskDate = task.parentElement.querySelector('input[type="date"]').value;
+                    history.push(`${taskDate}: ${taskName}`);
+                }
+            });
+            document.getElementById('history').innerText = history.join('\n');
+        }
+
+        function checkCompletion() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            if (Array.from(tasks).every(task => task.checked)) {
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+            messageBox.innerHTML = `
+                <img src="https://via.placeholder.com/100x100.png?text=🥳" alt="Selamat">
+                <p>Selamat! Cabai Anda siap dipanen.</p>
+            `;
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prosedur Membuat Kebun Vertikal di Halaman Rumah untuk Menanam Tanaman Cabai</h1>
+        <p>Membuat kebun vertikal di halaman rumah adalah cara yang efisien untuk memanfaatkan ruang yang terbatas dan tetap bisa menanam tanaman favorit Anda seperti cabai. Berikut adalah langkah-langkah detail untuk membuat kebun vertikal:</p>
+        
+        <h2>1. Perencanaan dan Persiapan</h2>
+        <ul>
+            <li class="task">
+                <label>Tentukan Lokasi: Pilih lokasi yang mendapat sinar matahari minimal 6 jam sehari.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Ukuran Kebun Vertikal: Tentukan ukuran kebun vertikal sesuai dengan ruang yang tersedia.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Alat dan Bahan: Kerangka Vertikal, Media Tanam, Pot atau Wadah Tanam, Sistem Pengairan, Benih Cabai.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>2. Membuat Kerangka Vertikal</h2>
+        <ul>
+            <li class="task">
+                <label>Membuat Rangka: Buat rangka vertikal dengan menggunakan kayu atau pipa PVC. Pastikan rangka kuat dan stabil.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Memasang Wadah Tanam: Potong bagian atas botol dan buat lubang di bagian bawah untuk drainase. Susun botol secara vertikal pada rangka.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>3. Menyiapkan Media Tanam</h2>
+        <ul>
+            <li class="task">
+                <label>Mencampur Media Tanam: Campurkan tanah, kompos, dan cocopeat dengan perbandingan 1:1:1.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Mengisi Wadah Tanam: Isi setiap wadah tanam dengan media tanam yang telah disiapkan.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>4. Menanam Benih Cabai</h2>
+        <ul>
+            <li class="task">
+                <label>Menyemai Benih: Rendam benih cabai dalam air hangat selama 12-24 jam sebelum disemai untuk mempercepat perkecambahan.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penanaman: Setelah bibit tumbuh sekitar 10-15 cm dan memiliki 4-5 daun sejati, pindahkan bibit ke wadah tanam di kebun vertikal.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>5. Perawatan Tanaman</h2>
+        <ul>
+            <li class="task">
+                <label>Penyiraman: Siram tanaman secara teratur, pastikan media tanam tetap lembap tetapi tidak tergenang air.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemupukan: Beri pupuk organik atau pupuk cair setiap 2 minggu sekali.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemangkasan: Pangkas daun dan cabang yang tidak perlu untuk meningkatkan sirkulasi udara dan mencegah penyakit.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>6. Pengendalian Hama dan Penyakit</h2>
+        <ul>
+            <li class="task">
+                <label>Pemeriksaan Rutin: Periksa tanaman secara rutin untuk mendeteksi hama dan penyakit sejak dini.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pengendalian Hama: Gunakan pestisida organik atau insektisida nabati jika ditemukan hama seperti kutu daun atau ulat.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pengendalian Penyakit: Potong dan buang bagian tanaman yang terinfeksi untuk mencegah penyebaran penyakit.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>7. Panen</h2>
+        <ul>
+            <li class="task">
+                <label>Waktu Panen: Cabai biasanya siap panen sekitar 2-3 bulan setelah tanam, tergantung varietas.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Cara Panen: Petik cabai dengan tangan atau gunting, pastikan untuk memetik dengan tangkai agar cabai tetap segar dan tahan lama.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>8. Pemeliharaan Pascapanen</h2>
+        <ul>
+            <li class="task">
+                <label>Perawatan Tanaman: Setelah panen, terus rawat tanaman untuk siklus panen berikutnya.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penyimpanan Hasil Panen: Simpan cabai di tempat yang sejuk dan kering atau langsung gunakan untuk memasak.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>Riwayat Penanaman</h2>
+        <pre id="history"></pre>
+    </div>
+</body>
+</html>

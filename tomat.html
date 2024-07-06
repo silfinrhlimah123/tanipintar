@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosedur Membuat Kebun Vertikal untuk Menanam Tanaman Tomat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #c8e6c9; /* Light green background */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .task input[type="date"] {
+            margin-left: 10px;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .message-box img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            tasks.forEach(task => {
+                task.addEventListener('change', function() {
+                    const taskDateInput = this.parentElement.querySelector('input[type="date"]');
+                    if (this.checked) {
+                        const now = new Date();
+                        taskDateInput.value = now.toISOString().substring(0, 10);
+                    } else {
+                        taskDateInput.value = '';
+                    }
+                    updateHistory();
+                    checkCompletion();
+                });
+            });
+        });
+
+        function updateHistory() {
+            const history = [];
+            document.querySelectorAll('.task input[type="checkbox"]').forEach(task => {
+                if (task.checked) {
+                    const taskName = task.parentElement.querySelector('label').innerText;
+                    const taskDate = task.parentElement.querySelector('input[type="date"]').value;
+                    history.push(`${taskDate}: ${taskName}`);
+                }
+            });
+            document.getElementById('history').innerText = history.join('\n');
+        }
+
+        function checkCompletion() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            if (Array.from(tasks).every(task => task.checked)) {
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+            messageBox.innerHTML = `
+                <img src="https://via.placeholder.com/100x100.png?text=🥳" alt="Selamat">
+                <p>Selamat! Tanaman tomat Anda siap dipanen.</p>
+            `;
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prosedur Membuat Kebun Vertikal untuk Menanam Tanaman Tomat</h1>
+        <p>Membuat kebun vertikal untuk menanam tanaman tomat adalah cara yang efektif untuk mengoptimalkan ruang terbatas dan memastikan tanaman tumbuh dengan baik. Berikut adalah langkah-langkah detail untuk membuat kebun vertikal:</p>
+        
+        <h2>1. Perencanaan dan Persiapan</h2>
+        <ul>
+            <li class="task">
+                <label>Pilih Lokasi yang Sesuai: Pilih lokasi yang mendapat sinar matahari penuh minimal 6-8 jam sehari untuk pertumbuhan tomat yang optimal.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Ukuran Kebun Vertikal: Tentukan ukuran kebun vertikal berdasarkan jumlah tanaman tomat yang ingin Anda tanam.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Alat dan Bahan:
+                    <ul>
+                        <li>Kerangka Vertikal: Bisa menggunakan kayu, pipa PVC, atau struktur vertikal lainnya yang kuat dan tahan lama.</li>
+                        <li>Wadah Tanam: Pot atau wadah yang cukup besar dan dalam untuk menampung akar tomat.</li>
+                        <li>Media Tanam: Campuran tanah, kompos, dan pupuk kandang dengan perbandingan 3:1:1 untuk memastikan nutrisi yang cukup.</li>
+                        <li>Benih atau Bibit Tomat: Pilih varietas tomat yang sesuai dengan kebutuhan Anda, seperti tomat cherry, tomat besar, atau tomat plum.</li>
+                    </ul>
+                </label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>2. Membuat Kerangka Vertikal</h2>
+        <ul>
+            <li class="task">
+                <label>Buat Rangka Vertikal: Gunakan bahan seperti kayu atau pipa PVC untuk membuat rangka vertikal yang kokoh. Pastikan rangka memiliki penyangga yang cukup untuk menopang wadah tanam.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Susun Wadah Tanam: Susun wadah tanam secara vertikal pada rangka, pastikan jarak antar wadah cukup untuk pertumbuhan tanaman tomat.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>3. Menyiapkan Media Tanam</h2>
+        <ul>
+            <li class="task">
+                <label>Campur Media Tanam: Campurkan tanah taman dengan kompos dan pupuk kandang untuk meningkatkan kesuburan tanah dan retensi air.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Isi Wadah Tanam: Isi setiap wadah tanam dengan campuran media tanam yang telah disiapkan, pastikan untuk tidak memadatkan terlalu keras agar akar tomat dapat tumbuh dengan baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>4. Menanam Benih atau Bibit Tomat</h2>
+        <ul>
+            <li class="task">
+                <label>Penyemaian Benih: Jika memulai dari benih, semai benih tomat di dalam wadah dengan kedalaman yang sesuai dan tutupi dengan lapisan tipis tanah.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penanaman Bibit: Jika menggunakan bibit, tanam bibit tomat dengan hati-hati di wadah tanam yang sudah disiapkan. Tekan tanah di sekitar bibit untuk memastikan kestabilan tanaman.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>5. Perawatan Tanaman</h2>
+        <ul>
+            <li class="task">
+                <label>Penyiraman: Siram tanaman secara teratur, terutama saat tanah terasa kering. Hindari penyiraman berlebihan yang dapat menyebabkan akar membusuk.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemupukan: Beri pupuk yang kaya akan nitrogen dan kalium setiap 2-3 minggu untuk mendukung pertumbuhan dan perkembangan buah tomat.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemangkasan: Potong tunas samping yang tumbuh untuk meningkatkan sirkulasi udara dan memfokuskan pertumbuhan tanaman pada buah tomat.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>6. Panen Buah Tomat</h2>
+        <ul>
+            <li class="task">
+                <label>Pemeriksaan Kematangan: Periksa tomat secara berkala untuk memastikan sudah mencapai kematangan yang diinginkan.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemetikan Buah: Petik buah tomat dengan hati-hati saat sudah matang penuh. Jangan biarkan tomat terlalu lama di pohon untuk menghindari busuk.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>Ringkasan Aktivitas</h2>
+        <p>Di bawah ini adalah ringkasan aktivitas yang telah Anda selesaikan:</p>
+        <pre id="history"></pre>
+    </div>
+</body>
+</html>

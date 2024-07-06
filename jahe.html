@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosedur Membuat Kebun Vertikal untuk Menanam Tanaman Stroberi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #c8e6c9; /* Light green background */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .task input[type="date"] {
+            margin-left: 10px;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .message-box img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            tasks.forEach(task => {
+                task.addEventListener('change', function() {
+                    const taskDateInput = this.parentElement.querySelector('input[type="date"]');
+                    if (this.checked) {
+                        const now = new Date();
+                        taskDateInput.value = now.toISOString().substring(0, 10);
+                    } else {
+                        taskDateInput.value = '';
+                    }
+                    updateHistory();
+                    checkCompletion();
+                });
+            });
+        });
+
+        function updateHistory() {
+            const history = [];
+            document.querySelectorAll('.task input[type="checkbox"]').forEach(task => {
+                if (task.checked) {
+                    const taskName = task.parentElement.querySelector('label').innerText;
+                    const taskDate = task.parentElement.querySelector('input[type="date"]').value;
+                    history.push(`${taskDate}: ${taskName}`);
+                }
+            });
+            document.getElementById('history').innerText = history.join('\n');
+        }
+
+        function checkCompletion() {
+            const tasks = document.querySelectorAll('.task input[type="checkbox"]');
+            if (Array.from(tasks).every(task => task.checked)) {
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('message-box');
+            messageBox.innerHTML = `
+                <img src="stroberioutput.jpg" alt="Selamat">
+                <p>Selamat! Tanaman stroberi Anda siap dipanen.</p>
+            `;
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prosedur Membuat Kebun Vertikal untuk Menanam Tanaman Stroberi</h1>
+        <p>Membuat kebun vertikal untuk menanam stroberi adalah cara yang efisien untuk memanfaatkan ruang terbatas dan menikmati hasil panen buah segar di halaman rumah Anda. Stroberi adalah buah yang tidak hanya memikat dengan rasa manisnya, tetapi juga menyimpan fakta menarik yang sering kali terlewatkan. Permukaannya yang berbutir bukanlah hanya dekoratif; setiap 'butiran' kecil adalah ovarium buah yang berkembang, menciptakan tekstur yang unik dan memikat. Terlebih lagi, stroberi mengandung nutrisi penting seperti vitamin C, serat, dan antioksidan yang baik untuk kesehatan tubuh. Kaya akan manfaat ini membuat stroberi menjadi pilihan yang tidak hanya enak, tetapi juga bermanfaat bagi kesehatan. Kemampuannya tumbuh dengan baik dalam pot atau di kebun vertikal menambah daya tariknya sebagai tanaman yang ramah lingkungan dan cocok untuk berbagai ruang, termasuk area terbatas di depan rumah. Dengan menghadirkan keindahan visual dan manfaat gizi yang berlimpah, stroberi tidak hanya memuaskan selera tapi juga menambah nilai estetika dan kesehatan di lingkungan sekitar. Berikut adalah langkah-langkah detail untuk membuat kebun vertikal stroberi:</p>
+        
+        <h2>1. Perencanaan dan Persiapan</h2>
+        <ul>
+            <li class="task">
+                <label>Pilih Lokasi yang Sesuai: Pilih lokasi yang mendapat sinar matahari penuh minimal 6-8 jam sehari untuk pertumbuhan stroberi yang optimal.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Ukuran Kebun Vertikal: Tentukan ukuran kebun vertikal berdasarkan jumlah tanaman stroberi yang ingin Anda tanam.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Alat dan Bahan:
+                    <ul>
+                        <li>Kerangka Vertikal: Gunakan kayu, pipa PVC, atau struktur vertikal lainnya yang kokoh dan tahan lama.</li>
+                        <li>Wadah Tanam: Pot atau wadah yang cukup dalam dan memiliki lubang drainase yang baik.</li>
+                        <li>Media Tanam: Campuran tanah khusus untuk stroberi, kompos, dan pasir dengan perbandingan 3:1:1 untuk nutrisi yang cukup dan drainase yang baik.</li>
+                        <li>Benih atau Bibit Stroberi: Pilih varietas stroberi yang sesuai dengan iklim tempat Anda tinggal.</li>
+                    </ul>
+                </label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+        
+        <h2>2. Membuat Kerangka Vertikal</h2>
+        <ul>
+            <li class="task">
+                <label>Buat Rangka Vertikal: Gunakan bahan seperti kayu atau pipa PVC untuk membuat rangka vertikal yang stabil dan mampu menopang wadah tanam dengan baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Susun Wadah Tanam: Susun wadah tanam secara vertikal pada rangka, pastikan jarak antar wadah cukup untuk pertumbuhan tanaman stroberi.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>3. Menyiapkan Media Tanam</h2>
+        <ul>
+            <li class="task">
+                <label>Campur Media Tanam: Campurkan tanah khusus untuk stroberi dengan kompos dan pasir dalam perbandingan yang disarankan. Pastikan media tanam memiliki drainase yang baik.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Isi Wadah Tanam: Isi setiap wadah tanam dengan campuran media tanam yang telah disiapkan. Tekan perlahan tanah tanpa memadatkannya terlalu keras.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>4. Menanam Benih atau Bibit Stroberi</h2>
+        <ul>
+            <li class="task">
+                <label>Penyemaian Benih: Jika memulai dari benih, sebarkan benih stroberi di atas media tanam dengan sedikit ditutupi dengan tanah.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penanaman Bibit: Jika menggunakan bibit stroberi, tanam bibit dengan hati-hati di wadah tanam yang telah disiapkan. Pastikan akar terbenam dengan baik di dalam media tanam.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>5. Perawatan Tanaman</h2>
+        <ul>
+            <li class="task">
+                <label>Penyiraman: Siram tanaman stroberi secara teratur, terutama saat tanah terasa kering. Hindari penyiraman berlebih yang dapat menyebabkan pembusukan akar.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Pemupukan: Beri pupuk organik atau pupuk khusus untuk stroberi setiap 2-3 minggu sekali untuk memastikan pertumbuhan yang baik dan produksi buah yang optimal.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Penyambungan: Dukung batang stroberi yang panjang dengan tali atau dukungan lainnya saat tanaman tumbuh.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>6. Panen</h2>
+        <ul>
+            <li class="task">
+                <label>Waktu Panen: Stroberi biasanya siap panen dalam 4-6 minggu setelah munculnya bunga, tergantung pada varietasnya.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+            <li class="task">
+                <label>Cara Panen: Panen stroberi dengan memetik buah yang matang dengan lembut. Pastikan tangkai buah tetap utuh untuk memperpanjang umur simpannya.</label>
+                <input type="checkbox">
+                <input type="date">
+            </li>
+        </ul>
+
+        <h2>Ringkasan Aktivitas</h2>
+        <p>Di bawah ini adalah ringkasan aktivitas yang telah Anda selesaikan:</p>
+        <pre id="history"></pre>
+    </div>
+</body>
+</html>
